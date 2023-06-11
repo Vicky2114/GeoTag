@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "GeoTag",
+    "slug": "authui",
+    "plugins": ["@react-native-google-signin/google-signin"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "googleServicesFile": "./google-services.json",
+      "versionCode":1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.geotag.camera",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCvAS2turpuQTaaPXfYf7oLVMxfm7G9S9w"
+        }
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7f1f7592-abdd-4feb-96a9-1ab10ee69806"
+      }
+    }
+  }
+}

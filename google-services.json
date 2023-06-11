@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "714263589362",
+    "project_id": "geotag-2d471",
+    "storage_bucket": "geotag-2d471.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714263589362:android:978bdc1af724a4437b3b6b",
+        "android_client_info": {
+          "package_name": "com.geotag.camera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714263589362-o0tj5thjo9827g55qls2063u2qdvb3c8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geotag.camera",
+            "certificate_hash": "75a66563fdc28e8fe595de94b8fa4d7feb6a56bc"
+          }
+        },
+        {
+          "client_id": "714263589362-s6rmcsak75n1v0g7rm98c4g4ue8dj8ok.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geotag.camera",
+            "certificate_hash": "345d5d7e196771b5a4b9d7a7501f9700cebac643"
+          }
+        },
+        {
+          "client_id": "714263589362-7i9t0t60o4epceu7s9jrqoqcvtom0ikq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVa422DB8PfGoqGxL9FklGu9lP8o4iwkI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714263589362-7i9t0t60o4epceu7s9jrqoqcvtom0ikq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
