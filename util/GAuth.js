@@ -60,11 +60,12 @@ function GAuth(){
             {
               text:'YES',
               onPress: async() => {
-                if(user){
+                if(user && authCtx.isAuthenticated){
                 await GoogleSignin.revokeAccess();
                 await auth().signOut();
+                authCtx.logout();
                 }
-                if(authCtx.isAuthenticated){
+                else if(authCtx.isAuthenticated){
                   await authCtx.logout();
                 }
                 setUser(null);

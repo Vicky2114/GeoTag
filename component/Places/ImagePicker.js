@@ -1,17 +1,17 @@
 import { Alert, Button, View, Image,Text,StyleSheet } from "react-native"
-import { launchCameraAsync, useCameraPermissions, PermissionStatus } from 'expo-image-picker'
+import { requestMediaLibraryPermissionsAsync,launchCameraAsync, useCameraPermissions, PermissionStatus, launchImageLibraryAsync, MediaTypeOptions, useMediaLibraryPermissions } from 'expo-image-picker'
 import { useState } from "react";
 import { Colors } from "../../constants/color";
 import OutlineButton from "../ui/OutlineButton";
 function ImagePicker({onTakeImage}) {
     const [pickedImage, setPickedImage] = useState()
     const [cameraPermissionInformation, requestPermission] = useCameraPermissions();
-
+   const [mediaPermissionInformation,galleryPermission]=useMediaLibraryPermissions();
     async function verifyPermissions() {
             const permissionResponse = await requestPermission();
-            
-        if (cameraPermissionInformation.status === PermissionStatus.DENIED) {
-            return permissionResponse.granted;
+            const MediaPermisson =await  galleryPermission()
+        if(cameraPermissionInformation.status === PermissionStatus.DENIED ||mediaPermissionInformation.status === PermissionStatus.DENIED) {
+            return MediaPermisson.granted;
         }
         return true;
     }
@@ -24,10 +24,27 @@ function ImagePicker({onTakeImage}) {
         const image = await launchCameraAsync({
             allowsEditing: true,
             aspect: [16, 9],
-            quality: 0.5,
+            quality: 1,
         });
         setPickedImage(image.uri)
         onTakeImage(image.uri)
+    }
+    async function takeImageFromMediaHandler(){
+        const hasPermission = await verifyPermissions();
+        if (!hasPermission) {
+            return;
+        }
+        
+        const image = await launchImageLibraryAsync({
+            mediaTypes: MediaTypeOptions.Images,
+            allowsEditing:true,
+            aspect: [16, 9],
+            quality:1
+        })
+
+        setPickedImage(image.uri)
+        onTakeImage(image.uri)
+        
     }
 
   let imagePreview =<Text>No image Taken Yet.</Text>
@@ -36,7 +53,14 @@ function ImagePicker({onTakeImage}) {
   }
     return <View>
         <View style={styles.imagePreview}>{imagePreview}</View>
-    <OutlineButton icon = "camera" onPress={takeImageHandler}>Take Image</OutlineButton>
+        <View style={styles.actions}>
+        <OutlineButton icon="camera" onPress={takeImageHandler}>
+          Take Photo
+        </OutlineButton>
+        <OutlineButton icon="images" onPress={takeImageFromMediaHandler} >
+          Media Image
+        </OutlineButton>
+      </View>
     </View>
 }
 export default ImagePicker
@@ -54,5 +78,10 @@ const styles =StyleSheet.create({
     image:{
         width:'100%',
         height:'100%'
-    }
+    },
+    actions: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+      }
 })
